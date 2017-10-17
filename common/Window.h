@@ -1,4 +1,4 @@
-#ifdef	WINDOW_H
+#ifndef	WINDOW_H
 #define WINDOW_H
 
 //Device TYPe
@@ -13,6 +13,8 @@ typedef enum
 class  IWindow
 {
 public:
+	//iWidth,iHeight窗口宽度和高度
+	//dt:想创建的设备
 	virtual bool			CreateWindow(int iWidth, int iHeight, DeviceType  dt)=0;
 	virtual DeviceType		GetDeviceType() = 0;
 	virtual void            Update() = 0;
