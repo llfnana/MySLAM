@@ -1,25 +1,28 @@
 #ifndef FRAME_H
 #define FRAME_H
 #include "ITexture.h"
-
-
-//点云信息
-typedef struct  
-{
-	int		m_ix, m_iy;
-}SPointCloud;
+#include <vector>
 #include "opencv2/opencv.hpp"
 #include "opencv2/videoio.hpp"
+
+#include "PointCloud.h"
+
 class CFrame
 {
 public:
 	CFrame(cv::VideoCapture	*);
-	ITexture*  GetTexture();
-
+	ITexture*		GetTexture();
+	CPointCloud     *GetPointCloud();
+	
+protected:
+	//更新帧的状态
+	void             UpdateFrameState();
 private:
 	int					m_iFrameHeight;
 	int					m_iFrameWidth;
 	cv::VideoCapture	*m_pCapture;
+
+	CPointCloud			*m_pPointCloud;
 
 	float				m_fBrightness;
 	float				m_fContrast;
