@@ -32,7 +32,8 @@ CFrame::CFrame(cv::VideoCapture	*pCapture)
 	m_iFrameHeight = (int)m_pCapture->get(cv::VideoCaptureProperties::CAP_PROP_FRAME_HEIGHT);
 
 	//在这里创建点云
-	m_pPointCloud = new CPointCloud();
+	m_pPointCloud = new CPointCloud(this);
+
 	UpdateFrameState();
 }
 
@@ -47,4 +48,24 @@ void     CFrame::UpdateFrameState()
 	m_fSharpness = m_pCapture->get(cv::VideoCaptureProperties::CAP_PROP_SHARPNESS);
 	m_fGain = m_pCapture->get(cv::VideoCaptureProperties::CAP_PROP_GAIN);
 	m_fBackligh = m_pCapture->get(cv::VideoCaptureProperties::CAP_PROP_BACKLIGHT);
+}
+
+
+void    CFrame::UpdatePointCloud()
+{
+
+}
+
+cv::Mat* CFrame::GetNativeImage()
+{
+	bool	bResult;
+
+	if (!m_pCapture)
+		return NULL;
+
+	bResult = m_pCapture->grab();
+	if (!m_pCapture->retrieve(m_NetiveMat, cv::CAP_OPENNI_BGR_IMAGE))
+		return NULL;
+
+	return &m_NetiveMat;
 }

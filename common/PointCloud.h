@@ -23,14 +23,19 @@ typedef enum
 	FAST
 }FeaturePointType;
 
+class CFrame;
+
+
 class CPointCloud
 {
 public:
-	CPointCloud(PointCloudType ept = PointCloudType::FeaturePoint, FeaturePointType fpt = FeaturePointType::SIFT, void* pUserData = NULL)
+	CPointCloud(CFrame *pFrame,PointCloudType ept = PointCloudType::FeaturePoint, FeaturePointType fpt = FeaturePointType::SIFT, void* pUserData = NULL)
 	{
 		m_pUserData = pUserData;
 		m_PointCloudType = ept;
 		m_FeaturePointType = fpt;
+
+		m_pFrame = pFrame;
 	}
 	void	DebugPointCloud();
 
@@ -40,6 +45,8 @@ public:
 	}
 
 
+	void		SetPointCloud(PointCloudType ept, FeaturePointType fpt);
+
 	FeaturePointType    GetFeaturePointType()
 	{
 		return m_FeaturePointType;
@@ -48,6 +55,7 @@ private:
 	PointCloudType		m_PointCloudType;
 	FeaturePointType	m_FeaturePointType;
 	void				*m_pUserData;
+	CFrame*				m_pFrame;
 };
 
 #endif

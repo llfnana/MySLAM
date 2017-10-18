@@ -5,7 +5,10 @@
 
 #include "opencv2/opencv.hpp"
 #include "opencv2/videoio.hpp"
-class CCamera
+#include "ICamera.h"
+
+//感觉这个应该叫RGB Camera.......
+class CCamera:public ICamera
 {
 public :
 	CCamera();
