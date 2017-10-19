@@ -1,0 +1,6 @@
+G:/MySLAM/MySLAM/3rdparty/libroxml-2.3.0/build/CMakeFiles/roxml-dynamic.dir
+G:/MySLAM/MySLAM/3rdparty/libroxml-2.3.0/build/CMakeFiles/roxml-static.dir
+G:/MySLAM/MySLAM/3rdparty/libroxml-2.3.0/build/CMakeFiles/roxml-tool.dir
+G:/MySLAM/MySLAM/3rdparty/libroxml-2.3.0/build/CMakeFiles/INSTALL.dir
+G:/MySLAM/MySLAM/3rdparty/libroxml-2.3.0/build/CMakeFiles/ALL_BUILD.dir
+G:/MySLAM/MySLAM/3rdparty/libroxml-2.3.0/build/CMakeFiles/ZERO_CHECK.dir

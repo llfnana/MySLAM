@@ -89,13 +89,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>G:\opencv-3.3.0\modules\calib3d\include;G:\opencv-3.3.0\modules\features2d\include;G:\opencv-3.3.0\modules\highgui\include;G:\opencv-3.3.0\modules\videoio\include;G:\opencv-3.3.0\modules\imgcodecs\include;G:\opencv-3.3.0\modules\video\include;G:\opencv-3.3.0\modules\photo\include;G:\opencv-3.3.0\modules\imgproc\include;G:\opencv-3.3.0\modules\flann\include;G:\opencv-3.3.0\modules\core\include;G:\opencv-3.3.0\modules\videostab\include;G:\opencv-3.3.0\modules\superres\include;G:\opencv-3.3.0\modules\stitching\include;G:\opencv-3.3.0\modules\shape\include;G:\opencv-3.3.0\modules\objdetect\include;G:\opencv-3.3.0\modules\ml\include;G:\opencv-3.3.0\modules\dnn\include;G:\opencv-3.3.0\include;G:\opencv-3.3.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\opencv-3.3.0\modules\calib3d\include;G:\opencv-3.3.0\modules\features2d\include;G:\opencv-3.3.0\modules\highgui\include;G:\opencv-3.3.0\modules\videoio\include;G:\opencv-3.3.0\modules\imgcodecs\include;G:\opencv-3.3.0\modules\video\include;G:\opencv-3.3.0\modules\photo\include;G:\opencv-3.3.0\modules\imgproc\include;G:\opencv-3.3.0\modules\flann\include;G:\opencv-3.3.0\modules\core\include;G:\opencv-3.3.0\modules\videostab\include;G:\opencv-3.3.0\modules\superres\include;G:\opencv-3.3.0\modules\stitching\include;G:\opencv-3.3.0\modules\shape\include;G:\opencv-3.3.0\modules\objdetect\include;G:\opencv-3.3.0\modules\ml\include;G:\opencv-3.3.0\modules\dnn\include;G:\opencv-3.3.0\include;G:\opencv-3.3.0\build;G:\MySLAM\MySLAM\3rdparty;G:\MySLAM\MySLAM\3rdparty\libroxml-2.3.0\build\Debug;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;opencv_dnn330d.lib;opencv_ml330d.lib;opencv_objdetect330d.lib;opencv_shape330d.lib;opencv_stitching330d.lib;opencv_superres330d.lib;opencv_videostab330d.lib;opencv_photo330d.lib;opencv_calib3d330d.lib;opencv_features2d330d.lib;opencv_flann330d.lib;opencv_highgui330d.lib;opencv_videoio330d.lib;opencv_imgcodecs330d.lib;opencv_video330d.lib;opencv_imgproc330d.lib;opencv_core330d.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>G:\opencv-3.3.0\build\lib\Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;opencv_dnn330d.lib;opencv_ml330d.lib;opencv_objdetect330d.lib;opencv_shape330d.lib;opencv_stitching330d.lib;opencv_superres330d.lib;opencv_videostab330d.lib;opencv_photo330d.lib;opencv_calib3d330d.lib;opencv_features2d330d.lib;opencv_flann330d.lib;opencv_highgui330d.lib;opencv_videoio330d.lib;opencv_imgcodecs330d.lib;opencv_video330d.lib;opencv_imgproc330d.lib;opencv_core330d.lib;roxml.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>G:\opencv-3.3.0\build\lib\Debug;G:\MySLAM\MySLAM\3rdparty\libroxml-2.3.0\build\Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -156,8 +156,10 @@
     <ClInclude Include="..\..\..\common\ICamera.h" />
     <ClInclude Include="..\..\..\common\IFrame.h" />
     <ClInclude Include="..\..\..\common\ITexture.h" />
+    <ClInclude Include="..\..\..\common\OpenCVView.h" />
     <ClInclude Include="..\..\..\common\OpenGLEsTexture.h" />
     <ClInclude Include="..\..\..\common\PointCloud.h" />
+    <ClInclude Include="..\..\..\common\View.h" />
     <ClInclude Include="..\..\..\common\Window.h" />
     <ClInclude Include="..\..\..\UI\Windows.h" />
     <ClInclude Include="stdafx.h" />
@@ -168,6 +170,7 @@
     <ClCompile Include="..\..\..\common\Frame.cpp" />
     <ClCompile Include="..\..\..\common\ICamera.cpp" />
     <ClCompile Include="..\..\..\common\IFrame.cpp" />
+    <ClCompile Include="..\..\..\common\OpenCVView.cpp" />
     <ClCompile Include="..\..\..\common\OpenGLEsTexture.cpp" />
     <ClCompile Include="..\..\..\common\PointCloud.cpp" />
     <ClCompile Include="..\..\..\UI\Windows.cpp">

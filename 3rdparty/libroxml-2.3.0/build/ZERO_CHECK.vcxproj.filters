@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="G:\MySLAM\MySLAM\3rdparty\libroxml-2.3.0\build\CMakeFiles\21e77bfb22ed8c35603b4dc278cbf9a9\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D81097BD-B001-3845-B8CF-C9FF8B2A3085}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

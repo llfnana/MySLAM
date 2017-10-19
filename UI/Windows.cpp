@@ -87,6 +87,12 @@ bool    CWindows::ReLoadConfig()
 {
 	node_t*		pNode;
 	node_t*     pRoot;
+	char        PointCloudType[256];
+	char        FeaturePointType[256];
+	int         iResult;
+
+	PointCloudType[0] = 0;
+	FeaturePointType[0] = 0;
 
 	pNode = roxml_load_doc(CONFIGFILE);
 	if (!pNode)
@@ -97,6 +103,16 @@ bool    CWindows::ReLoadConfig()
 	int elm_nodes1 = roxml_get_chld_nb(pRoot);
 	node_t *pPointCloud=roxml_get_chld(pRoot, "PointCloud", 0);
 	
+
+	node_t *attr_PointCloudType = roxml_get_attr(pPointCloud, "PointCloudType", 0);
+	if (!roxml_get_content(attr_PointCloudType, PointCloudType, 256, &iResult))
+		return false;
+
+	attr_PointCloudType = roxml_get_attr(pPointCloud, "FeaturePointType", 0);
+	if (!roxml_get_content(attr_PointCloudType, FeaturePointType, 256, &iResult))
+		return false;
+
+
 
 
 	roxml_close(pNode);
