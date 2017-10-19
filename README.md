@@ -1,8 +1,6 @@
 # MySLAM
 SLAM
-
-架构出现了点问题，目前是:
-一个window有N个照相机，每个照相机有Frame。
-而好的架构应该是window有View，每个view有一个照相机，每个照相机有Frame。这么做的好片有
-1):每个view来管理照相机
-2):可以为view提供不同的渲染设备，比如openglesView,MetalView等等
+SIFT和SURF因为不是免费的，cv3.3默认没有，需要从外部模块安装.
+也有可能使用其它的非默认安装的模块，比如cvv。
+参考：
+https://github.com/opencv/opencv_contrib
