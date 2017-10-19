@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE PARTS SYSTEM "parts.dtd">
+<?xml-stylesheet type="text/css" href="xmlpartsstyle.css"?>
+<Root>
+   <PointCloud PointCloudType="FeaturePoint" FeaturePointType="ORB">
+   </PointCloud>
+</Root>
