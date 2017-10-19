@@ -14,7 +14,7 @@ public:
 	virtual ICamera*		GetCamera(int iIndex);
 
 	virtual void            RenderFrames();
-
+	virtual void            SetPointType(PointCloudType, FeaturePointType);
 protected:
 	ICamera*				m_pCamera;
 };

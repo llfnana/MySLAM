@@ -36,3 +36,9 @@ void            COpenCVView::RenderFrames()
 	cv::Mat *pmat=m_pCamera->GetFrame()->GetNativeImage();
 	imshow(WINDOWSNAME, *pmat);
 }
+
+
+void            COpenCVView::SetPointType(PointCloudType, FeaturePointType)
+{
+
+}
