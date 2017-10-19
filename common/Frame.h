@@ -2,24 +2,27 @@
 #define FRAME_H
 #include "ITexture.h"
 #include <vector>
-#include "opencv2/opencv.hpp"
-#include "opencv2/videoio.hpp"
+
 
 #include "PointCloud.h"
 #include "IFrame.h"
 
-class CFrame
+class CFrame:public IFrame
 {
 	friend class CPointCloud;
 public:
-	CFrame(cv::VideoCapture	*);
+	CFrame(cv::VideoCapture	*,bool bIsDebugPointCloud=false);
 	virtual ITexture*		GetTexture();
 	virtual cv::Mat*        GetNativeImage();
 	virtual CPointCloud     *GetPointCloud();
+
+
 protected:
 	//¸üÐÂÖ¡µÄ×´Ì¬
 	void             UpdateFrameState();
 	void             UpdatePointCloud();
+
+	bool               m_bIsDebugPointCloud;
 private:
 	int					m_iFrameHeight;
 	int					m_iFrameWidth;

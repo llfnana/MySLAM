@@ -13,14 +13,12 @@ class CCamera:public ICamera
 public :
 	CCamera();
 	virtual ~CCamera();
-	CFrame *GetFrame();
+	IFrame *GetFrame();
 private:
 	cv::VideoCapture  *m_pCapture;
 
 	//µ±Ç°Ö¡
 	CFrame						*m_pCurrentFrame;
-
-	std::vector<CFrame*>		m_FrameQueue;
 };
 
 

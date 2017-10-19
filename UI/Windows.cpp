@@ -2,6 +2,10 @@
 #include "Windows.h"
 #include "opencv2/highgui.hpp"
 using namespace cv;
+#include "libroxml-2.3.0/src/roxml.h"
+//#include "../common/OpenCVView.h"
+
+#define         CONFIGFILE    "./ConfigFile.XML"
 
 CWindows*		CWindows::m_pInterface = NULL;
 
@@ -36,18 +40,14 @@ bool			CWindows::CreateWindow(int iWidth, int iHeight, DeviceType  dt)
 
 #endif
 	m_DeviceType = dt;
-
-	//初始化照相机
-	m_pCamera = new CCamera();
-
+	m_pView = new COpenCVView();
 	return true;
 }
 
 
 CWindows::~CWindows()
 {
-	if(m_pCamera)
-		delete m_pCamera;
+
 	destroyWindow(WINDOWSNAME);
 }
 
@@ -81,4 +81,43 @@ void CWindows::onMouse(int event, int x, int y, int flags, void* userdata)
 void     CWindows::OnMouse(MouseEvent *ME)
 {
 
+}
+
+bool    CWindows::ReLoadConfig()
+{
+	node_t*		pNode;
+	node_t*     pRoot;
+
+	pNode = roxml_load_doc(CONFIGFILE);
+	if (!pNode)
+		return false;
+	pRoot=roxml_get_root(pNode);
+	
+	pRoot = roxml_get_chld(pRoot, NULL, 0);
+	int elm_nodes1 = roxml_get_chld_nb(pRoot);
+	node_t *pPointCloud=roxml_get_chld(pRoot, "PointCloud", 0);
+	
+
+
+	roxml_close(pNode);
+	return true;
+}
+
+
+int       CWindows::GetViewCount()
+{
+	return 1;
+}
+
+
+IView*    CWindows::GetView(int iIndex)
+{
+	return m_pView;
+}
+
+void       CWindows::RenderFrames()
+{
+	if (!m_pView)
+		return;
+	m_pView->RenderFrames();
 }

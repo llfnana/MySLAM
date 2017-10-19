@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-CFrame *CCamera::GetFrame()
+IFrame *CCamera::GetFrame()
 {
 	//摄像机没打开，返回null
 	if (!m_pCapture->isOpened())
 		return NULL;
 
 
-	return NULL;
+	return m_pCurrentFrame;
 }
 
 
@@ -20,11 +20,12 @@ CCamera::CCamera()
 	m_pCapture->open(cv::VideoCaptureAPIs::CAP_ANY);
 
 	//默认创建100帧
-	m_FrameQueue.resize(100);
-	for (int i=0;i<m_FrameQueue.size();i++)
-	{
-		m_FrameQueue[i] = new CFrame(m_pCapture);
-	}
+	//m_FrameQueue.resize(100);
+	//for (int i=0;i<m_FrameQueue.size();i++)
+	//{
+	//	m_FrameQueue[i] = new CFrame(m_pCapture,true);
+	//}
+	m_pCurrentFrame = new CFrame(m_pCapture, true);
 }
 
 CCamera::~CCamera()

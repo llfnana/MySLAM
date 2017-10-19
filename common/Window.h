@@ -1,5 +1,6 @@
 #ifndef	WINDOW_H
 #define WINDOW_H
+#include "View.h"
 
 //Device TYPe
 typedef enum 
@@ -19,5 +20,11 @@ public:
 	virtual DeviceType		GetDeviceType() = 0;
 	virtual void            Update() = 0;
 	virtual void            Render() = 0;
+	
+	//返回view的个数
+	virtual int             GetViewCount() = 0;
+	virtual IView*			GetView(int iIndex) = 0;
+
+	virtual void            RenderFrames() = 0;
 };
 #endif

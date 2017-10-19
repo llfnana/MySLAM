@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "OpenCVView.h"
+#ifdef _WIN32
+#include "../UI//Windows.h"
+#endif
 
 COpenCVView::COpenCVView()
 {
@@ -27,5 +30,9 @@ ICamera*		COpenCVView::GetCamera(int iIndex)
 
 void            COpenCVView::RenderFrames()
 {
+	if (!m_pCamera)
+		return;
 
+	cv::Mat *pmat=m_pCamera->GetFrame()->GetNativeImage();
+	imshow(WINDOWSNAME, *pmat);
 }

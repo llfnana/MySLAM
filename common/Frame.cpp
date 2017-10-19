@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "Frame.h"
 
-
+#ifdef _WIN32
+#include "../UI//Windows.h"
+#endif
 ITexture*  CFrame::GetTexture()
 {
 	bool	bResult;
@@ -24,9 +26,10 @@ CPointCloud*	CFrame::GetPointCloud()
 }
 
 
-CFrame::CFrame(cv::VideoCapture	*pCapture)
+CFrame::CFrame(cv::VideoCapture	*pCapture,  bool bIsDebugPointCloud):IFrame(bIsDebugPointCloud)
 {
 	m_pCapture = pCapture;
+	m_bIsDebugPointCloud = bIsDebugPointCloud;
 
 	m_iFrameWidth = (int)m_pCapture->get(cv::VideoCaptureProperties::CAP_PROP_FRAME_WIDTH);
 	m_iFrameHeight = (int)m_pCapture->get(cv::VideoCaptureProperties::CAP_PROP_FRAME_HEIGHT);
@@ -69,3 +72,4 @@ cv::Mat* CFrame::GetNativeImage()
 
 	return &m_NetiveMat;
 }
+

@@ -5,7 +5,7 @@
 #define  WINDOWSNAME   "ARWindow"
 
 #include "opencv2/core/types.hpp"
-#include "../common/Camera.h"
+#include "../common/OpenCVView.h"
 
 struct MouseEvent
 {
@@ -26,12 +26,20 @@ public:
 	virtual void            Update() ;
 	virtual void            Render() ;
 	virtual void            OnMouse(MouseEvent *ME);
+
+	//返回view的个数
+	virtual int             GetViewCount() ;
+	virtual IView*			GetView(int iIndex) ;
+
+	virtual void            RenderFrames();
+	//重新加载配置文件
+	bool    ReLoadConfig();
 private:
 	DeviceType				m_DeviceType;
 	static  void		    onMouse(int event, int x, int y, int flags, void* userdata);
 	static  CWindows*		m_pInterface;
 
-	CCamera*				m_pCamera;
+	IView*					m_pView;
 };
 
 #endif

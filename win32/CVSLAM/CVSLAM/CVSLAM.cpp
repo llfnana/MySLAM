@@ -10,15 +10,25 @@ int main()
 	CWindows   *pWindows = new CWindows();
 
 	pWindows->CreateWindow(800, 600, DeviceType::NONE);
+	int    iResult;
 
-	//while (1)
+	while (1)
 	{
+		iResult = waitKey(30);
+
+		//ESC
+		if(iResult==27)
+			break;
+		if (iResult == 32)
+		{
+			pWindows->ReLoadConfig();
+		}
+
 		pWindows->Update();
 		pWindows->Render();
-
-		waitKey(0);
-		delete pWindows;
+		pWindows->RenderFrames();
 	}
+	delete pWindows;
     return 0;
 }
 
