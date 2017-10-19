@@ -153,6 +153,8 @@ bool    CWindows::ReLoadConfig()
 		return false;
 	}
 	roxml_close(pNode);
+
+	m_pView->SetPointType(pct, fpt);
 	return true;
 }
 

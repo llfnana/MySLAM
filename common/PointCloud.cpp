@@ -2,6 +2,7 @@
 #include "PointCloud.h"
 #include "Frame.h"
 
+
 void	CPointCloud::DebugPointCloud()
 {
 

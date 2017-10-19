@@ -13,7 +13,8 @@ class CCamera:public ICamera
 public :
 	CCamera();
 	virtual ~CCamera();
-	IFrame *GetFrame();
+	virtual   IFrame *GetFrame();
+	virtual   void  SetPointType(PointCloudType, FeaturePointType);
 private:
 	cv::VideoCapture  *m_pCapture;
 

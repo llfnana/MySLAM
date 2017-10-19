@@ -73,3 +73,8 @@ cv::Mat* CFrame::GetNativeImage()
 	return &m_NetiveMat;
 }
 
+
+void  CFrame::SetPointType(PointCloudType pct, FeaturePointType fpt)
+{
+	m_pPointCloud->SetPointCloud(pct, fpt);
+}

@@ -161,6 +161,8 @@
     <ClInclude Include="..\..\..\common\PointCloud.h" />
     <ClInclude Include="..\..\..\common\View.h" />
     <ClInclude Include="..\..\..\common\Window.h" />
+    <ClInclude Include="..\..\..\cv\CPUFeatruePoint.h" />
+    <ClInclude Include="..\..\..\cv\FeatruePoint.h" />
     <ClInclude Include="..\..\..\UI\Windows.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -173,6 +175,7 @@
     <ClCompile Include="..\..\..\common\OpenCVView.cpp" />
     <ClCompile Include="..\..\..\common\OpenGLEsTexture.cpp" />
     <ClCompile Include="..\..\..\common\PointCloud.cpp" />
+    <ClCompile Include="..\..\..\cv\CPUFeatruePoint.cpp" />
     <ClCompile Include="..\..\..\UI\Windows.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>

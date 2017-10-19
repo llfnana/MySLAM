@@ -15,7 +15,7 @@ public:
 	virtual ITexture*		GetTexture();
 	virtual cv::Mat*        GetNativeImage();
 	virtual CPointCloud     *GetPointCloud();
-
+	virtual   void			SetPointType(PointCloudType, FeaturePointType);
 
 protected:
 	//¸üÐÂÖ¡µÄ×´Ì¬

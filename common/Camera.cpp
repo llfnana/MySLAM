@@ -33,3 +33,11 @@ CCamera::~CCamera()
 	if (m_pCapture)
 		delete m_pCapture;
 }
+
+
+void  CCamera::SetPointType(PointCloudType pct, FeaturePointType fpt)
+{
+	if (!m_pCurrentFrame)
+		return;
+	m_pCurrentFrame->SetPointType(pct, fpt);
+}
