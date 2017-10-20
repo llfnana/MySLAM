@@ -2,10 +2,10 @@
 #include "Windows.h"
 #include "opencv2/highgui.hpp"
 using namespace cv;
-#include "libroxml-2.3.0/src/roxml.h"
+
 #include "../common/PointCloud.h"
 
-#define         CONFIGFILE    "./ConfigFile.XML"
+
 
 CWindows*		CWindows::m_pInterface = NULL;
 
@@ -85,76 +85,10 @@ void     CWindows::OnMouse(MouseEvent *ME)
 
 bool    CWindows::ReLoadConfig()
 {
-	node_t*		pNode;
-	node_t*     pRoot;
-	char        cPointCloudType[256];
-	char        cFeaturePointType[256];
-	int         iResult;
+	Config  *pConfig = Config::GetInstace();
+	pConfig->LoadConfigFile();
 
-	cPointCloudType[0] = 0;
-	cFeaturePointType[0] = 0;
-
-	pNode = roxml_load_doc(CONFIGFILE);
-	if (!pNode)
-		return false;
-	pRoot=roxml_get_root(pNode);
-	
-	pRoot = roxml_get_chld(pRoot, NULL, 0);
-	int elm_nodes1 = roxml_get_chld_nb(pRoot);
-	node_t *pPointCloud=roxml_get_chld(pRoot, "PointCloud", 0);
-	
-
-	node_t *attr_PointCloudType = roxml_get_attr(pPointCloud, "PointCloudType", 0);
-	if (!roxml_get_content(attr_PointCloudType, cPointCloudType, 256, &iResult))
-		return false;
-
-	attr_PointCloudType = roxml_get_attr(pPointCloud, "FeaturePointType", 0);
-	if (!roxml_get_content(attr_PointCloudType, cFeaturePointType, 256, &iResult))
-		return false;
-
-
-	PointCloudType		pct;
-
-	if (!_strcmpi(cPointCloudType, "FeaturePoint"))
-	{
-		pct = PointCloudType::FeaturePoint;
-	}
-	else if (!_strcmpi(cPointCloudType, "LightFlow"))
-	{
-		pct = PointCloudType::LightFlow;
-	}
-	else
-	{
-		printf("ConfigFile.XML FeaturePoint vlaue is error\nit's value is:\n FeaturePoint or LightFlow");
-		return false;
-	}
-
-	FeaturePointType    fpt;
-		
-	if (!_strcmpi(cFeaturePointType, "SIFT"))
-	{
-		fpt = FeaturePointType::SIFT;
-	}
-	else if (!_strcmpi(cFeaturePointType, "SURF"))
-	{
-		fpt = FeaturePointType::SURF;
-	}
-	else if (!_strcmpi(cFeaturePointType, "ORB"))
-	{
-		fpt = FeaturePointType::ORB;
-	}
-	else if (!_strcmpi(cFeaturePointType, "FAST"))
-	{
-		fpt = FeaturePointType::FAST;
-	}
-	else
-	{
-		printf("ConfigFile.XML FeaturePointType vlaue is error\nit's value is:\n SIFT or SURF or ORB or FAST");
-		return false;
-	}
-	roxml_close(pNode);
-
-	m_pView->SetPointType(pct, fpt);
+	m_pView->SetPointType(pConfig);
 	return true;
 }
 

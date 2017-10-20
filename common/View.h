@@ -2,7 +2,7 @@
 #define VIEW_H
 #include "PointCloud.h"
 #include "../common/Camera.h"
-
+#include "Config.h"
 class IView
 {
 public:
@@ -12,7 +12,7 @@ public:
 
 	virtual void            RenderFrames()=0;
 
-	virtual void            SetPointType(PointCloudType, FeaturePointType)=0;
+	virtual void            SetPointType(Config*)=0;
 };
 
 #endif

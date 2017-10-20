@@ -3,7 +3,6 @@
 #include "Frame.h"
 #include <vector>
 
-#include "opencv2/opencv.hpp"
 #include "opencv2/videoio.hpp"
 #include "ICamera.h"
 
@@ -14,7 +13,7 @@ public :
 	CCamera();
 	virtual ~CCamera();
 	virtual   IFrame *GetFrame();
-	virtual   void  SetPointType(PointCloudType, FeaturePointType);
+	virtual   void  SetPointType(Config*);
 private:
 	cv::VideoCapture  *m_pCapture;
 

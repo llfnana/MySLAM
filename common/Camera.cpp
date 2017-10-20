@@ -35,9 +35,9 @@ CCamera::~CCamera()
 }
 
 
-void  CCamera::SetPointType(PointCloudType pct, FeaturePointType fpt)
+void  CCamera::SetPointType(Config* pConfig)
 {
 	if (!m_pCurrentFrame)
 		return;
-	m_pCurrentFrame->SetPointType(pct, fpt);
+	m_pCurrentFrame->SetPointType(pConfig);
 }

@@ -3,9 +3,10 @@
 
 #include "../common/Window.h"
 #define  WINDOWSNAME   "ARWindow"
-
+#include "opencv2/highgui.hpp"
 #include "opencv2/core/types.hpp"
 #include "../common/OpenCVView.h"
+#include "../common/Config.h"
 
 struct MouseEvent
 {

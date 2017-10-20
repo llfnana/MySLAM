@@ -38,9 +38,9 @@ void            COpenCVView::RenderFrames()
 }
 
 
-void            COpenCVView::SetPointType(PointCloudType pct, FeaturePointType fpt)
+void            COpenCVView::SetPointType(Config* pConfig)
 {
 	if (!m_pCamera)
 		return;
-	m_pCamera->SetPointType(pct, fpt);
+	m_pCamera->SetPointType(pConfig);
 }

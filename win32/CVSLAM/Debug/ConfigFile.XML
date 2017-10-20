@@ -1,7 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE PARTS SYSTEM "parts.dtd">
 <?xml-stylesheet type="text/css" href="xmlpartsstyle.css"?>
-<Root>
+<Root Type="CPU">
    <PointCloud PointCloudType="FeaturePoint" FeaturePointType="ORB">
+      <SIFT threshold="10"></SIFT>
+      <SURF hessian="10.1"></SURF>
+      <BRISK thresh="30" octaves="3" patternScale="1.0f"></BRISK>
    </PointCloud>
-</Root>
+
+   <Matcher Type="BF" Knn="2" MaxDistance="10" DistThreshold="2.5" RatioThreshold="0.8">
+         <BF></BF>
+   </Matcher>
+</Root> 

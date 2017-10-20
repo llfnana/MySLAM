@@ -76,7 +76,7 @@ cv::Mat* CFrame::GetNativeImage()
 }
 
 
-void  CFrame::SetPointType(PointCloudType pct, FeaturePointType fpt)
+void  CFrame::SetPointType(Config *pConfig)
 {
-	m_pPointCloud->SetPointCloud(pct, fpt);
+	m_pPointCloud->SetPointCloud(pConfig);
 }

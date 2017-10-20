@@ -22,6 +22,9 @@
     <Filter Include="cv">
       <UniqueIdentifier>{e5e1f100-4973-4ac2-9e45-d5b110cfe0dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{f173cbc0-1c8a-49c9-949f-937c77dd26fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,6 +78,12 @@
     <ClInclude Include="..\..\..\cv\CPUFeatruePoint.h">
       <Filter>cv</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\cv\Matcher.h">
+      <Filter>cv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Config.h">
+      <Filter>Config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -109,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\cv\CPUFeatruePoint.cpp">
       <Filter>cv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cv\Matcher.cpp">
+      <Filter>cv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Config.cpp">
+      <Filter>Config</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
