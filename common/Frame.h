@@ -2,7 +2,7 @@
 #define FRAME_H
 #include "ITexture.h"
 #include <vector>
-
+#include "Config.h"
 
 #include "PointCloud.h"
 #include "IFrame.h"
@@ -15,7 +15,7 @@ public:
 	virtual ITexture*		GetTexture();
 	virtual cv::Mat*        GetNativeImage();
 	virtual CPointCloud     *GetPointCloud();
-	virtual   void			SetPointType(PointCloudType, FeaturePointType);
+	virtual   void			SetPointType(Config*);
 
 protected:
 	//¸üÐÂÖ¡µÄ×´Ì¬
