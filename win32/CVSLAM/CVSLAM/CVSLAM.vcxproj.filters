@@ -69,6 +69,12 @@
     <ClInclude Include="..\..\..\common\OpenCVView.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\cv\FeatruePoint.h">
+      <Filter>cv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cv\CPUFeatruePoint.h">
+      <Filter>cv</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -100,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\common\OpenCVView.cpp">
       <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cv\CPUFeatruePoint.cpp">
+      <Filter>cv</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

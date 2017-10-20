@@ -1,6 +1,8 @@
 #ifndef POINTCLOUD_H
 #define POINTCLOUD_H
 #include <vector>
+#include "../cv/FeatruePoint.h"
+
 //点云信息
 typedef struct
 {
@@ -17,7 +19,7 @@ typedef enum
 //特征点类型
 typedef enum
 {
-	SIFT,
+	SIFT,			//cv 3默认没有SURF,SIFT这两个模块,因为这两个模块不是免费的，我去了
 	SURF,
 	ORB,
 	FAST
@@ -44,6 +46,10 @@ public:
 			;
 	}
 
+	//计算点云
+	void       Computer();
+
+
 
 	void		SetPointCloud(PointCloudType ept, FeaturePointType fpt);
 
@@ -55,6 +61,7 @@ private:
 	PointCloudType		m_PointCloudType;
 	FeaturePointType	m_FeaturePointType;
 	void				*m_pUserData;
+	IFeaturePoint		*m_pFeatruePoint;
 	CFrame*				m_pFrame;
 };
 

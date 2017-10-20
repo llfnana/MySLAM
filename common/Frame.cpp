@@ -22,6 +22,8 @@ ITexture*  CFrame::GetTexture()
 
 CPointCloud*	CFrame::GetPointCloud()
 {
+
+
 	return m_pPointCloud;
 }
 
