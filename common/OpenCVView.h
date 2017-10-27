@@ -15,6 +15,8 @@ public:
 
 	virtual void            RenderFrames();
 	virtual void            SetPointType(Config*);
+
+	virtual void            Update();
 protected:
 	ICamera*				m_pCamera;
 };

@@ -4,20 +4,6 @@
 #ifdef _WIN32
 #include "../UI//Windows.h"
 #endif
-ITexture*  CFrame::GetTexture()
-{
-	bool	bResult;
-
-	if (!m_pCapture)
-		return NULL;
-
-	bResult=m_pCapture->grab();
-	if (!bResult)
-		return NULL;
-
-	return NULL;
-}
-
 
 
 CPointCloud*	CFrame::GetPointCloud()
@@ -39,6 +25,9 @@ CFrame::CFrame(cv::VideoCapture	*pCapture,  bool bIsDebugPointCloud):IFrame(bIsD
 	//在这里创建点云
 	m_pPointCloud = new CPointCloud(this);
 
+	
+	m_pPreFrame = new CFrame(pCapture, bIsDebugPointCloud);
+	m_pPreFrame->UpdateFrameState();
 	UpdateFrameState();
 }
 
@@ -63,20 +52,51 @@ void    CFrame::UpdatePointCloud()
 
 cv::Mat* CFrame::GetNativeImage()
 {
-	bool	bResult;
-
-	if (!m_pCapture)
-		return NULL;
-
-	bResult = m_pCapture->grab();
-	if (!m_pCapture->retrieve(m_NetiveMat, cv::CAP_OPENNI_BGR_IMAGE))
-		return NULL;
-
 	return &m_NetiveMat;
 }
+
 
 
 void  CFrame::SetPointType(Config *pConfig)
 {
 	m_pPointCloud->SetPointCloud(pConfig);
+}
+
+void    CFrame::Update()
+{
+	bool	bResult;
+
+	if (!m_pCapture)
+		return ;
+
+	
+	//m_PreNetiveMat = m_NetiveMat;
+	//m_pPreFrame->SetNetiveImage(&m_NetiveMat);
+	(*m_pPreFrame) = this;
+
+	bResult = m_pCapture->grab();
+	if (!m_pCapture->retrieve(m_NetiveMat, cv::CAP_OPENNI_BGR_IMAGE))
+		return ;
+
+}
+
+
+IFrame*		CFrame::GetPreFrame()
+{
+	return NULL;
+}
+
+
+void     CFrame::operator  =(CFrame* pFrame)
+{
+	cv::Mat*  pImage=pFrame->GetNativeImage();
+
+	m_NetiveMat = *pImage;
+
+}
+
+
+void     CFrame::SetPointCloud(IFeaturePoint*	pFeaturePoint)
+{
+	m_pFeaturePoint = pFeaturePoint;
 }

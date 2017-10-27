@@ -14,6 +14,7 @@ public :
 	virtual ~CCamera();
 	virtual   IFrame *GetFrame();
 	virtual   void  SetPointType(Config*);
+	virtual  void           Update();
 private:
 	cv::VideoCapture  *m_pCapture;
 

@@ -19,12 +19,6 @@ CCamera::CCamera()
 	m_pCapture = new cv::VideoCapture(0);
 	m_pCapture->open(cv::VideoCaptureAPIs::CAP_ANY);
 
-	//Ä¬ÈÏ´´½¨100Ö¡
-	//m_FrameQueue.resize(100);
-	//for (int i=0;i<m_FrameQueue.size();i++)
-	//{
-	//	m_FrameQueue[i] = new CFrame(m_pCapture,true);
-	//}
 	m_pCurrentFrame = new CFrame(m_pCapture, true);
 }
 
@@ -40,4 +34,9 @@ void  CCamera::SetPointType(Config* pConfig)
 	if (!m_pCurrentFrame)
 		return;
 	m_pCurrentFrame->SetPointType(pConfig);
+}
+
+void    CCamera::Update()
+{
+	m_pCurrentFrame->Update();
 }

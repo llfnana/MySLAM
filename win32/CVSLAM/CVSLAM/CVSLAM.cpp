@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "../../../UI/Windows.h"
+#include "../../../common/Config.h"
 #include "opencv2/highgui.hpp"
 using namespace cv;
 int main()
@@ -11,6 +12,8 @@ int main()
 
 	pWindows->CreateWindow(800, 600, DeviceType::NONE);
 	int    iResult;
+
+	Config::GetInstace()->LoadConfigFile();
 
 	while (1)
 	{

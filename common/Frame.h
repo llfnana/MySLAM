@@ -12,11 +12,16 @@ class CFrame:public IFrame
 	friend class CPointCloud;
 public:
 	CFrame(cv::VideoCapture	*,bool bIsDebugPointCloud=false);
-	virtual ITexture*		GetTexture();
 	virtual cv::Mat*        GetNativeImage();
 	virtual CPointCloud     *GetPointCloud();
 	virtual   void			SetPointType(Config*);
+	virtual  void           Update();
 
+	virtual  IFrame*		GetPreFrame();
+
+	virtual  void           SetPointCloud(IFeaturePoint*);
+	void     operator =(CFrame*);
+	
 protected:
 	//更新帧的状态
 	void             UpdateFrameState();
@@ -30,8 +35,10 @@ private:
 
 	CPointCloud			*m_pPointCloud;
 
-	cv::Mat			    m_NetiveMat;
-
+	cv::Mat			    m_NetiveMat;		//当前帧
+	IFeaturePoint		*m_pFeaturePoint;
+	
+	CFrame				*m_pPreFrame;
 
 	float				m_fBrightness;
 	float				m_fContrast;

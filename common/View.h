@@ -13,6 +13,7 @@ public:
 	virtual void            RenderFrames()=0;
 
 	virtual void            SetPointType(Config*)=0;
+	virtual void            Update() = 0;
 };
 
 #endif

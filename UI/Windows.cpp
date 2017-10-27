@@ -58,7 +58,7 @@ DeviceType		CWindows::GetDeviceType()
 
 void            CWindows::Update()
 {
-
+	m_pView->Update();
 }
 
 void            CWindows::Render()

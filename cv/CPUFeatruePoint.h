@@ -6,6 +6,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc.hpp"
 #include "opencv2/core/mat.hpp"
+#include "../common/IFrame.h"
 
 class  CFeaturePoint_CPUSIFT :public IFeaturePoint
 {
@@ -13,9 +14,15 @@ public:
 	CFeaturePoint_CPUSIFT(int threshold) {
 		m_iThreshold = threshold;
 	}
-	virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	//virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	virtual      int    FindFeaturePoint(IFrame*  pFrame)
 	{
 		cv::Mat		src_gray;
+		cv::Mat*	pMat;
+
+		if (!pFrame)
+			return 0;
+		pMat = pFrame->GetNativeImage();
 
 		if (!pMat)
 			return 0;
@@ -24,6 +31,8 @@ public:
 		//改成FastFeatureDetector,号称更快
 		//cv::FAST(src_gray, m_keyPoints, m_iThreshold);
 		cv::AGAST(src_gray, m_keyPoints, m_iThreshold);
+
+		pFrame->SetPointCloud(this);
 		return m_keyPoints.size();
 	}
 
@@ -37,16 +46,21 @@ class CFeaturePoint_CPUORB :public IFeaturePoint
 public:
 	CFeaturePoint_CPUORB() {}
 	virtual ~CFeaturePoint_CPUORB() {}
-	virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	//virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	virtual      int    FindFeaturePoint(IFrame*  pFrame)
 	{
 		cv::Mat		imgGray;
-
-		if (!pMat)
+		cv::Mat*	pMat;
+		if (!pFrame)
 			return 0;
+
+		pMat=pFrame->GetNativeImage();
 		int maxFeatureCount = 500;
 		cv::Ptr<cv::ORB> detector = cv::ORB::create(maxFeatureCount);
 		cv::cvtColor(*pMat, imgGray, cv::COLOR_BGR2GRAY);
 		detector->detectAndCompute(imgGray, cv::noArray(), m_keyPoints, m_descriptors);
+
+		pFrame->SetPointCloud(this);
 		return m_keyPoints.size();
 	}
 private:
@@ -62,7 +76,8 @@ public:
 	}
 	virtual ~CFeaturePoint_CPUSURF() {};
 
-	virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	//virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	virtual      int    FindFeaturePoint(IFrame*  pFrame)
 	{
 		cv::UMat _descriptors1, _descriptors2;
 		cv::Mat		imgGray;
@@ -70,10 +85,16 @@ public:
 		cv::Mat descriptors1 = _descriptors1.getMat(cv::ACCESS_RW);
 		cv::Mat descriptors2 = _descriptors2.getMat(cv::ACCESS_RW);
 
+		if (!pFrame)
+			return 0;
+
+		cv::Mat* pMat = pFrame->GetNativeImage();
+
 		cv::Ptr<cv::Feature2D> surf;
 		cv::cvtColor(*pMat, imgGray, cv::COLOR_BGR2GRAY);
-		//surf(imgGray.getMat(cv::ACCESS_READ), cv::Mat(), m_keyPoints, descriptors1);
 		surf->detectAndCompute(imgGray, cv::noArray(), m_keyPoints, descriptors1);
+
+		pFrame->SetPointCloud(this);
 		return m_keyPoints.size();
 	}
 private:
@@ -92,13 +113,21 @@ public:
 		m_iPatternScale = patternScale;
 	}
 	virtual ~CFeaturePoint_CPUBRISK() {}
-	virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	//virtual	 int	FindFeaturePoint(cv::Mat* pMat)
+	virtual      int    FindFeaturePoint(IFrame*  pFrame)
 	{
 		cv::Mat		imgGray;
+
+		if (!pFrame)
+			return 0;
+
+		cv::Mat* pMat = pFrame->GetNativeImage();
 
 		cv::Ptr<cv::BRISK> Feature = cv::BRISK::create(m_iThresh, m_iOctaves, m_iPatternScale);
 		cv::cvtColor(*pMat, imgGray, cv::COLOR_BGR2GRAY);
 		Feature->detectAndCompute(imgGray, cv::noArray(), m_keyPoints, m_descriptors);
+
+		pFrame->SetPointCloud(this);
 		return m_keyPoints.size();
 	}
 private:
